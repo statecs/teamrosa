@@ -6,6 +6,8 @@ Sensor IP1: 213.159.191.41
 
 Sensor IP2: 213.159.191.166 - ingen kamera/heat
 
-Sensor IP3: 213.159.191.130 - ingen kamera/heat
+Sensor IP3: 213.159.191.130 - ingen kamera/heat (Ansible installerat) 
 
 Sensor IP4: 213.159.191.75 - ingen heat
+
+Sensor IP5: 213.159.191.122 - ingen heat
