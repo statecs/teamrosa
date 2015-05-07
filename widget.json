@@ -1,0 +1,11 @@
+{
+  "Name": "My Widget",
+  "Type": 3,
+  "Price": 19.95,
+  "Description": "A simple widget that does practically nothing",
+  "Parts": [
+    {"Name": "Screws", "Quantity": 100},
+    {"Name": "Speaker", "Quantity": 1},
+    {"Name": "Batteries", "Quantity": 2}
+  ]
+}
