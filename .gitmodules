@@ -1,3 +1,6 @@
 [submodule "rosa"]
 	path = rosa
 	url = https://github.com/purmonen/rosa
+[submodule "rosaAngular"]
+	path = rosaAngular
+	url = https://github.com/Jeppes/rosaAngular.git
