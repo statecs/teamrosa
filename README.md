@@ -23,3 +23,5 @@ Sensor IP5: 213.159.191.122 - ingen heat (Ansible installerat)
 
 
 mongodb://admin:password@ds031862.mongolab.com:31862/teamrosa
+
+VEtCU0LBaYtnDP51KNliwetFRtjywjNl
