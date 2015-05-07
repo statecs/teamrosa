@@ -17,6 +17,6 @@ for x in range(0, 3):
 	data['ip'] = '213.159.191.221'
 	data['temp'] = str(random.randint(24, 32))
 	json_data = json.dumps(data)
-	print json_data
+	json_data = json.loads(json_data)
 	readings.insert(json_data)
 	print "Inserted readings"
