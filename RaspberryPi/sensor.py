@@ -1,17 +1,8 @@
-import time
-import picamera
-import os
-import glob
-import datetime
-import base64
-import json
-import pymongo
-import urllib2
+#using Python 2.7
+import time, picamera, os, glob, datetime, base64, json, pymongo, urllib2
 
 #imports for sending
 from socket import *
-
-
 
 base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
@@ -21,14 +12,15 @@ def camera():
 	cam = picamera.PiCamera()
 	#cam.resolution(1024, 768)
 	cam.start_preview()
-	time.sleep(2) #getting camera rdy
+	time.sleep(2) 				#getting camera ready
 	cam.capture('test.jpg')
 	cam.close()
 	
-	with open("test.jpg", "rb") as image_file:
+	with open("test.jpg", "rb") as image_file:			#also closes file afterwards
 		encoded_string = base64.b64encode(image_file.read())
-	return encoded_string
+	return encoded_string			#returns base64-encoding 
 	#CHECK TEMPRATURE
+
 def read_temp_raw():
 	f= open(device_file, 'r')
 	lines= f.readlines()
@@ -53,16 +45,16 @@ def temp():
 	os.system('sudo modprobe w1-gpio')  #Needed for RPi model B
 	os.system('sudo modprobe w1-therm') #Needed for RPi model B
 	
-	ts1=time.time()
-	temp_log_entry=read_temp()
+	ts1 = time.time()
+	temp_log_entry = read_temp()
 	f = open('TempLog.txt','a')
 	g = open('TempLastValue.txt','w')
-	f.write(temp_log_entry[0]+"\n")
-	g.write(temp_log_entry[0]+"\n")
+	g.write(temp_log_entry[0] + "\n")
+	f.write(temp_log_entry[0] + "\n")
 	g.close()
 	f.close()
-	ts2=time.time()
-	delay=1.0-(ts2-ts1)
+	ts2 = time.time()
+	delay = 1.0 - (ts2 - ts1)
 	time.sleep(delay)
 	return temp_log_entry[1]
 
@@ -86,28 +78,28 @@ size = 1024
 s.bind((host,port))
 s.listen(5)
 
-isSending=False
+isSending = False
 
 while True:
 	server, addr = s.accept() 
 	serverreq = server.recv(size)
 	print(serverreq)  
 	if serverreq:
-		isSending=True
-		temperature = float (temp())
+		isSending = True
+		temperature = float(temp())
 		print(temperature)
-		Encode=camera()
+		Encode = camera()
 		
 		ts = time.time()
 		st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S UTC')
 	
-		data=[{'ip':ip, 'timestamp':st, 'temp':temperature, 'image':str(Encode)}]
+		data = [{'ip':ip, 'timestamp':st, 'temp':temperature, 'image':str(Encode)}]
 		print "%s" % ip
-		json_data=json.dumps(data)
-		json_data=json.loads(json_data)
+		json_data = json.dumps(data)
+		json_data = json.loads(json_data)
 		readings.insert(json_data)
-		print "done"
+		print "Done"
 		
 	if isSending:
 		server.close()
-		isSending=False
+		isSending = False
