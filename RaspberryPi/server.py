@@ -2,10 +2,7 @@
 A simple echo server 
 """ 
 
-import socket 
-import datetime
-import time
-import multiprocessing
+import socket, datetime, time, multiprocessing
 
 host = '213.159.191.221'          #enter your raspberry pi server ip
 port = 50010 
@@ -17,11 +14,11 @@ clientMessage.bind((host,port))
 clientMessage.listen(5)
 
 isSending = False
-clientList=["213.159.191.41"]       #add sensor nodes ip:s
+clientList = ["213.159.191.41"]       #add sensor nodes ip:s
 while True:
 	time.sleep(10)
 	for i in range(len(clientList)):
 		s = socket.socket() 
-		clientSocket=s.connect((clientList[i],port))
+		clientSocket = s.connect((clientList[i],port))
 		s.send("teamRosa!")
 		s.close()
