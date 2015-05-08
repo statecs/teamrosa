@@ -13,7 +13,7 @@ clientMessage = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 clientMessage.bind((host,port))
 clientMessage.listen(5)
 
-isSending = False
+#isSending = False			#superfluous
 clientList = ["213.159.191.41"]       #add sensor nodes ip:s
 while True:
 	time.sleep(10)
