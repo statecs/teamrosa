@@ -23,5 +23,5 @@ while True:
 	for i in range(len(clientList)):
 		s = socket.socket() 
 		clientSocket=s.connect((clientList[i],port))
-		s.send("teamRosaOwn!")
+		s.send("teamRosa!")
 		s.close()
