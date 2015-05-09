@@ -1,6 +1,6 @@
 # teamrosa
 
-Also check out the IOS app available at https://github.com/purmonen/Rosa
+Also check out the IOS app available at https://github.com/purmonen/Rosa and the web interface at [https://github.com/Jeppes/rosaAngular](https://github.com/Jeppes/rosaAngular).
 
 ## System architecture
 ![](./Ericsson%20system%20overview.png)
